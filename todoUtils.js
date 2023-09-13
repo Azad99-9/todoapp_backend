@@ -1,4 +1,3 @@
-const { update } = require('@microsoft/sp-lodash-subset')
 const { ObjectId } = require('mongodb')
 const client = require('./connect')
 

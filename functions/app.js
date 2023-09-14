@@ -41,6 +41,7 @@ const {
   signin,
   signup
 } = require('./authentication/authenticate')
+const serverless = require('serverless-http')
 
 
 app.use(express.json());
@@ -53,8 +54,9 @@ app.post('/api/inko/login', signin);
 app.post('/api/inko/signup', signup);
 
 // listen
-app.listen(5000, () => {
-    console.log('server started')
-})
+// app.listen(5000, () => {
+//     console.log('server started')
+// })
 
-console.log(uri);
+app.use('/.netlify/functions/api', router)
+module.exports.handler = serverless(app)

@@ -41,19 +41,20 @@ const {
   signin,
   signup
 } = require('./authentication/authenticate')
+const router = express.Router()
 const serverless = require('serverless-http')
 
 
-app.use(express.json());
-app.use('/api/inko/todos', todos)
+router.use(express.json());
+router.use('/api/inko/todos', todos)
 
 // login route
-app.post('/api/inko/login', signin);
+router.post('/api/inko/login', signin);
 
 // signup route
-app.post('/api/inko/signup', signup);
+router.post('/api/inko/signup', signup);
 
-// listen
+// lisrouterten
 // app.listen(5000, () => {
 //     console.log('server started')
 // })

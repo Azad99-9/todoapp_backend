@@ -42,22 +42,22 @@ const {
   signup
 } = require('./authentication/authenticate')
 const router = express.Router()
-const serverless = require('serverless-http')
+// const serverless = require('serverless-http')
 
 
-router.use(express.json());
-router.use('/api/inko/todos', todos)
+app.use(express.json());
+app.use('/api/inko/todos', todos)
 
 // login route
-router.post('/api/inko/login', signin);
+app.post('/api/inko/login', signin);
 
 // signup route
-router.post('/api/inko/signup', signup);
+app.post('/api/inko/signup', signup);
 
 // lisrouterten
-// app.listen(5000, () => {
-//     console.log('server started')
-// })
+app.listen(process.env.PORT || 5000, () => {
+    console.log('server started')
+})
 
-app.use('/.netlify/functions/api', router)
-module.exports.handler = serverless(app)
+// app.use('/.netlify/functions/api', router)
+// module.exports.handler = serverless(app)
